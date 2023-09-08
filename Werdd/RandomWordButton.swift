@@ -9,7 +9,10 @@ import UIKit
 
 class RandomWordButton: UIButton {
     
-    override init(frame: CGRect) {
+    var completion: (() -> Void)?
+    
+    init(frame: CGRect, completion: (() -> Void)?) {
+        self.completion = completion
         super.init(frame: frame)
         setupUI()
     }
@@ -23,5 +26,11 @@ class RandomWordButton: UIButton {
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium, scale: .medium)
         let image = UIImage(systemName: "arrow.triangle.2.circlepath.circle", withConfiguration: symbolConfiguration)
         setImage(image, for: .normal)
+        
+        addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+    }
+    
+    @objc func buttonPressed() {
+        completion?()
     }
 }

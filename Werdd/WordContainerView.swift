@@ -9,7 +9,9 @@ import UIKit
 
 class WordContainerView: UIView {
     
-    let wordTitleLabel: UILabel = {
+    var completion: (() -> Void)?
+    
+    var wordTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Programming."
@@ -17,7 +19,7 @@ class WordContainerView: UIView {
         return label
     }()
     
-    let partsOfSpeechLabel: UILabel = {
+    var partsOfSpeechLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "noun"
@@ -25,7 +27,7 @@ class WordContainerView: UIView {
         return label
     }()
     
-    let definitionLabel: UILabel = {
+    var definitionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "creating a sequence of instructions to enable the computer to do something"
@@ -35,11 +37,17 @@ class WordContainerView: UIView {
         return label
     }()
     
-    let randomWordButton: RandomWordButton = {
-        let button = RandomWordButton(frame: .zero)
+    lazy var randomWordButton: RandomWordButton = {
+        let button = RandomWordButton(frame: .zero, completion: completion)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    init(completion: (() -> Void)?) {
+        self.completion = completion
+        super.init(frame: .zero)
+        setupUI()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
