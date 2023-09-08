@@ -17,6 +17,8 @@
 		D3A6C5F02AA83EB000CADA8F /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5ED2AA83EB000CADA8F /* Rubik-Regular.ttf */; };
 		D3A6C5F32AA8404400CADA8F /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5F12AA8404400CADA8F /* Rubik-Italic.ttf */; };
 		D3A6C5F42AA8404400CADA8F /* Rubik-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5F22AA8404400CADA8F /* Rubik-SemiBold.ttf */; };
+		D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */; };
+		D3A6C5FC2AAAAD5000CADA8F /* RandomWordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D3A6C5ED2AA83EB000CADA8F /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Regular.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-Regular.ttf"; sourceTree = "<group>"; };
 		D3A6C5F12AA8404400CADA8F /* Rubik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Italic.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-Italic.ttf"; sourceTree = "<group>"; };
 		D3A6C5F22AA8404400CADA8F /* Rubik-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-SemiBold.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-SemiBold.ttf"; sourceTree = "<group>"; };
+		D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordContainerView.swift; sourceTree = "<group>"; };
+		D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWordButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				D33B277A29EE1BFA00CE0209 /* AppDelegate.swift */,
 				D33B277C29EE1BFA00CE0209 /* SceneDelegate.swift */,
 				D33B277E29EE1BFA00CE0209 /* HomeViewController.swift */,
+				D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */,
+				D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */,
 				D33B278329EE1BFB00CE0209 /* Assets.xcassets */,
 				D33B278529EE1BFB00CE0209 /* LaunchScreen.storyboard */,
 				D33B278829EE1BFB00CE0209 /* Info.plist */,
@@ -162,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */,
+				D3A6C5FC2AAAAD5000CADA8F /* RandomWordButton.swift in Sources */,
 				D33B277F29EE1BFA00CE0209 /* HomeViewController.swift in Sources */,
 				D33B277B29EE1BFA00CE0209 /* AppDelegate.swift in Sources */,
 				D33B277D29EE1BFA00CE0209 /* SceneDelegate.swift in Sources */,
