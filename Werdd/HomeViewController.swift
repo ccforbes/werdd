@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
             mainWordContainerView.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 30),
             mainWordContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  20),
             mainWordContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            mainWordContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            mainWordContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
         ])
     }
     
