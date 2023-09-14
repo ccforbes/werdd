@@ -37,6 +37,15 @@ class HomeViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.layer.cornerRadius = 30
+        tableView.backgroundColor = .white
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +56,7 @@ class HomeViewController: UIViewController {
     func setupUI() {
         setupAppTitle()
         setupContainerView()
+        setupTableView()
     }
     
     func setupAppTitle() {
@@ -68,6 +78,16 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    func setupTableView() {
+        view.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: mainWordContainerView.bottomAnchor, constant: 30),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
     /* MARK: Actions */
     
     func updateMainWordContainerWithRandomWord() {
@@ -78,5 +98,20 @@ class HomeViewController: UIViewController {
     }
 
 
+}
+
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return words.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        var content = cell.defaultContentConfiguration()
+        content.text = words[indexPath.row].name
+        content.secondaryText = words[indexPath.row].definition
+        cell.contentConfiguration = content
+        return cell
+    }
 }
 
