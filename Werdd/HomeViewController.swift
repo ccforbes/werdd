@@ -16,6 +16,10 @@ class HomeViewController: UIViewController {
         Word(name: "punic", definition: "of or relating to or characteristic of ancient Carthage or its people or their language", partOfSpeech: "adjective"),
         Word(name: "glib", definition: "artfully persuasive in speech", partOfSpeech: "adjective"),
         Word(name: "appetite", definition: "a feeling of craving something", partOfSpeech: "noun"),
+        Word(name: "unsay", definition: "take back what one has said", partOfSpeech: "verb"),
+        Word(name: "golf links", definition: "a golf course that is built on sandy ground near a shore", partOfSpeech: "verb"),
+        Word(name: "unbarreled", definition: "not in a barrel", partOfSpeech: "adjective"),
+        Word(name: "authoratively", definition: "in an authorative and magisterial manner", partOfSpeech: "adverb   "),
     ]
     
     let appTitleLabel: UILabel = {
