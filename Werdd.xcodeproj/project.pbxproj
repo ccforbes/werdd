@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -71,12 +71,11 @@
 			isa = PBXGroup;
 			children = (
 				D3A6C5EA2AA83E2300CADA8F /* Rubik */,
+				D3C2AD342B070F0500716BC9 /* Models */,
+				D3C2AD362B070F4600716BC9 /* Views */,
+				D3C2AD352B070F2900716BC9 /* Controllers */,
 				D33B277A29EE1BFA00CE0209 /* AppDelegate.swift */,
 				D33B277C29EE1BFA00CE0209 /* SceneDelegate.swift */,
-				D33B277E29EE1BFA00CE0209 /* HomeViewController.swift */,
-				D3A6C5FD2AAAB81F00CADA8F /* Word.swift */,
-				D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */,
-				D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */,
 				D33B278329EE1BFB00CE0209 /* Assets.xcassets */,
 				D33B278529EE1BFB00CE0209 /* LaunchScreen.storyboard */,
 				D33B278829EE1BFB00CE0209 /* Info.plist */,
@@ -94,6 +93,31 @@
 				D3A6C5ED2AA83EB000CADA8F /* Rubik-Regular.ttf */,
 			);
 			path = Rubik;
+			sourceTree = "<group>";
+		};
+		D3C2AD342B070F0500716BC9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D3A6C5FD2AAAB81F00CADA8F /* Word.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D3C2AD352B070F2900716BC9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D33B277E29EE1BFA00CE0209 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		D3C2AD362B070F4600716BC9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */,
+				D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +148,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					D33B277629EE1BFA00CE0209 = {
 						CreatedOnToolsVersion = 14.2;
@@ -132,7 +156,7 @@
 				};
 			};
 			buildConfigurationList = D33B277229EE1BFA00CE0209 /* Build configuration list for PBXProject "Werdd" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -198,6 +222,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -230,6 +255,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -258,6 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -290,6 +317,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -315,6 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTTC746J2F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Werdd/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -322,6 +351,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -342,6 +372,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTTC746J2F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Werdd/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -349,6 +380,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
