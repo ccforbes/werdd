@@ -44,6 +44,8 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.layer.cornerRadius = 30
         tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
         return tableView
     }()
 
@@ -100,18 +102,24 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return words.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        var content = cell.defaultContentConfiguration()
-        content.text = words[indexPath.row].name
-        content.secondaryText = words[indexPath.row].definition
-        cell.contentConfiguration = content
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as? WordTableViewCell else {
+            print("Expected WordTableViewCell but found nil")
+            return UITableViewCell()
+        }
+        cell.update(with: words[indexPath.row])
         return cell
+//        let cell = UITableViewCell()
+//        var content = cell.defaultContentConfiguration()
+//        content.text = words[indexPath.row].name
+//        content.secondaryText = words[indexPath.row].definition
+//        cell.contentConfiguration = content
+//        return cell
     }
 }
 
