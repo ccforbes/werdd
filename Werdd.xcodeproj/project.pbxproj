@@ -20,8 +20,10 @@
 		D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */; };
 		D3A6C5FC2AAAAD5000CADA8F /* RandomWordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */; };
 		D3A6C5FE2AAAB81F00CADA8F /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6C5FD2AAAB81F00CADA8F /* Word.swift */; };
-		D3C2AD3A2B07109200716BC9 /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD392B07109200716BC9 /* Words.swift */; };
+		D3C2AD3A2B07109200716BC9 /* WordsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD392B07109200716BC9 /* WordsDataSource.swift */; };
 		D3C2AD3C2B07128000716BC9 /* WordCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD3B2B07128000716BC9 /* WordCollectionViewCell.swift */; };
+		D3C2AD3E2B108E9600716BC9 /* WordDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD3D2B108E9600716BC9 /* WordDetailsViewController.swift */; };
+		D3C2AD402B10920300716BC9 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD3F2B10920300716BC9 /* WordDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +42,10 @@
 		D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordContainerView.swift; sourceTree = "<group>"; };
 		D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomWordButton.swift; sourceTree = "<group>"; };
 		D3A6C5FD2AAAB81F00CADA8F /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
-		D3C2AD392B07109200716BC9 /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
+		D3C2AD392B07109200716BC9 /* WordsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsDataSource.swift; sourceTree = "<group>"; };
 		D3C2AD3B2B07128000716BC9 /* WordCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3C2AD3D2B108E9600716BC9 /* WordDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsViewController.swift; sourceTree = "<group>"; };
+		D3C2AD3F2B10920300716BC9 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				D3A6C5FD2AAAB81F00CADA8F /* Word.swift */,
-				D3C2AD392B07109200716BC9 /* Words.swift */,
+				D3C2AD392B07109200716BC9 /* WordsDataSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				D33B277E29EE1BFA00CE0209 /* HomeViewController.swift */,
+				D3C2AD3D2B108E9600716BC9 /* WordDetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 				D3A6C5FB2AAAAD5000CADA8F /* RandomWordButton.swift */,
 				D3A6C5F92AAAAC1D00CADA8F /* WordContainerView.swift */,
 				D3C2AD3B2B07128000716BC9 /* WordCollectionViewCell.swift */,
+				D3C2AD3F2B10920300716BC9 /* WordDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -206,9 +212,11 @@
 				D33B277F29EE1BFA00CE0209 /* HomeViewController.swift in Sources */,
 				D3C2AD3C2B07128000716BC9 /* WordCollectionViewCell.swift in Sources */,
 				D33B277B29EE1BFA00CE0209 /* AppDelegate.swift in Sources */,
-				D3C2AD3A2B07109200716BC9 /* Words.swift in Sources */,
+				D3C2AD3A2B07109200716BC9 /* WordsDataSource.swift in Sources */,
 				D33B277D29EE1BFA00CE0209 /* SceneDelegate.swift in Sources */,
 				D3A6C5FE2AAAB81F00CADA8F /* Word.swift in Sources */,
+				D3C2AD3E2B108E9600716BC9 /* WordDetailsViewController.swift in Sources */,
+				D3C2AD402B10920300716BC9 /* WordDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

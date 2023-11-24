@@ -9,18 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let words: [Word] = [
-        Word(name: "antelope chipmunk", definition: "small ground squirrel of western United States", partOfSpeech: "noun"),
-        Word(name: "auricular artery", definition: "artery that supplies blood to the ear", partOfSpeech: "noun"),
-        Word(name: "electric circuit", definition: "an electrical device that provides a path for electrical current to flow", partOfSpeech: "noun"),
-        Word(name: "punic", definition: "of or relating to or characteristic of ancient Carthage or its people or their language", partOfSpeech: "adjective"),
-        Word(name: "glib", definition: "artfully persuasive in speech", partOfSpeech: "adjective"),
-        Word(name: "appetite", definition: "a feeling of craving something", partOfSpeech: "noun"),
-        Word(name: "unsay", definition: "take back what one has said", partOfSpeech: "verb"),
-        Word(name: "golf links", definition: "a golf course that is built on sandy ground near a shore", partOfSpeech: "verb"),
-        Word(name: "unbarreled", definition: "not in a barrel", partOfSpeech: "adjective"),
-        Word(name: "authoratively", definition: "in an authorative and magisterial manner", partOfSpeech: "adverb   "),
-    ]
+    let words: [Word] = WordsDataSource().words
     
     let appTitleLabel: UILabel = {
         let label = UILabel()
@@ -57,6 +46,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Light Gray")
+        navigationController?.navigationBar.prefersLargeTitles = false
         setupUI()
     }
     
@@ -107,7 +97,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return words.count
     }
@@ -120,6 +110,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.update(with: words[indexPath.row])
         return cell
     }
-    
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(WordDetailsViewController(word: words[indexPath.row]), animated: true)
+    }
 }
 
