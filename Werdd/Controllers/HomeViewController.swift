@@ -38,15 +38,20 @@ class HomeViewController: UIViewController {
         return view
     }()
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.dataSource = self
-        tableView.layer.cornerRadius = 30
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
-        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.identifier)
-        return tableView
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.size.width / 2.2, height: view.frame.size.width / 3.5)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .white
+        collectionView.register(WordCollectionViewCell.self, forCellWithReuseIdentifier: WordCollectionViewCell.identifier)
+        
+        return collectionView
     }()
 
     override func viewDidLoad() {
@@ -58,7 +63,7 @@ class HomeViewController: UIViewController {
     func setupUI() {
         setupAppTitle()
         setupContainerView()
-        setupTableView()
+        setupCollectionView()
     }
     
     func setupAppTitle() {
@@ -80,13 +85,13 @@ class HomeViewController: UIViewController {
         ])
     }
     
-    func setupTableView() {
-        view.addSubview(tableView)
+    func setupCollectionView() {
+        view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: mainWordContainerView.bottomAnchor, constant: 30),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: mainWordContainerView.bottomAnchor, constant: 30),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     
@@ -102,24 +107,19 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return words.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.identifier, for: indexPath) as? WordTableViewCell else {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordCollectionViewCell.identifier, for: indexPath) as? WordCollectionViewCell else {
             print("Expected WordTableViewCell but found nil")
-            return UITableViewCell()
+            return UICollectionViewCell()
         }
         cell.update(with: words[indexPath.row])
         return cell
-//        let cell = UITableViewCell()
-//        var content = cell.defaultContentConfiguration()
-//        content.text = words[indexPath.row].name
-//        content.secondaryText = words[indexPath.row].definition
-//        cell.contentConfiguration = content
-//        return cell
     }
+    
 }
 

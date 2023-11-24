@@ -7,9 +7,9 @@
 
 import UIKit
 
-class WordTableViewCell: UITableViewCell {
+class WordCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = "WordTableViewCell"
+    static let identifier: String = "WordCollectionViewCell"
     
     let containerView: UIView = {
         let view = UIView()
@@ -42,8 +42,8 @@ class WordTableViewCell: UITableViewCell {
         return label
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupUI()
     }
     
@@ -58,22 +58,26 @@ class WordTableViewCell: UITableViewCell {
         
         contentView.addSubview(containerView)
         
+        wordTitleLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        partsOfSpeechLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
+        
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             wordTitleLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-            wordTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 16),
+            wordTitleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
             
             partsOfSpeechLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.trailingAnchor, constant: 4),
+            partsOfSpeechLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
             partsOfSpeechLabel.bottomAnchor.constraint(equalTo: wordTitleLabel.bottomAnchor),
             
             definitionLabel.topAnchor.constraint(equalTo: wordTitleLabel.bottomAnchor, constant: 5),
-            definitionLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
             definitionLabel.leadingAnchor.constraint(equalTo: wordTitleLabel.leadingAnchor),
-            definitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4)
+            definitionLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -4),
+            definitionLabel.bottomAnchor.constraint(lessThanOrEqualTo: containerView.bottomAnchor, constant: -10),
         ])
     }
     
