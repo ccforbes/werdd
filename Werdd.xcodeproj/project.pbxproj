@@ -15,6 +15,7 @@
 		D35DE9752B312C30007198F0 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35DE9742B312C30007198F0 /* APIConstants.swift */; };
 		D35DE9772B33E84F007198F0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35DE9762B33E84F007198F0 /* NetworkManager.swift */; };
 		D35DE9792B3459D5007198F0 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35DE9782B3459D5007198F0 /* SearchView.swift */; };
+		D35DE97B2B34FE4F007198F0 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35DE97A2B34FE4F007198F0 /* SpinnerViewController.swift */; };
 		D3A6C5EE2AA83EB000CADA8F /* Rubik-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5EB2AA83EB000CADA8F /* Rubik-Bold.ttf */; };
 		D3A6C5EF2AA83EB000CADA8F /* Rubik-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5EC2AA83EB000CADA8F /* Rubik-Light.ttf */; };
 		D3A6C5F02AA83EB000CADA8F /* Rubik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3A6C5ED2AA83EB000CADA8F /* Rubik-Regular.ttf */; };
@@ -39,6 +40,7 @@
 		D35DE9742B312C30007198F0 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		D35DE9762B33E84F007198F0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		D35DE9782B3459D5007198F0 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D35DE97A2B34FE4F007198F0 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		D3A6C5EB2AA83EB000CADA8F /* Rubik-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Bold.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-Bold.ttf"; sourceTree = "<group>"; };
 		D3A6C5EC2AA83EB000CADA8F /* Rubik-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Light.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-Light.ttf"; sourceTree = "<group>"; };
 		D3A6C5ED2AA83EB000CADA8F /* Rubik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Rubik-Regular.ttf"; path = "../../../../../Downloads/Rubik/static/Rubik-Regular.ttf"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			children = (
 				D33B277E29EE1BFA00CE0209 /* HomeViewController.swift */,
 				D3C2AD3D2B108E9600716BC9 /* WordDetailsViewController.swift */,
+				D35DE97A2B34FE4F007198F0 /* SpinnerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				D35DE9772B33E84F007198F0 /* NetworkManager.swift in Sources */,
 				D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */,
 				D35DE9752B312C30007198F0 /* APIConstants.swift in Sources */,
+				D35DE97B2B34FE4F007198F0 /* SpinnerViewController.swift in Sources */,
 				D3A6C5FC2AAAAD5000CADA8F /* RandomWordButton.swift in Sources */,
 				D35DE9792B3459D5007198F0 /* SearchView.swift in Sources */,
 				D33B277F29EE1BFA00CE0209 /* HomeViewController.swift in Sources */,

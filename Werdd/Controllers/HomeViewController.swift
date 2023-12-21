@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     var words: [WordDetail]?
     var selectedWord: String?
     
+    let spinnerViewController = SpinnerViewController()
+    
     let appTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -119,6 +121,7 @@ class HomeViewController: UIViewController {
     /* MARK: Actions */
     
     func updateMainWordContainerWithRandomWord() {
+        addSpinner()
         networkManager.fetchRandomWord { [weak self] result in
             switch result {
             case .success(let randomWord):
@@ -126,6 +129,7 @@ class HomeViewController: UIViewController {
                     self?.mainWordContainerView.wordTitleLabel.text = randomWord.word
                     self?.mainWordContainerView.partsOfSpeechLabel.text = randomWord.results?.first?.partOfSpeech
                     self?.mainWordContainerView.definitionLabel.text = randomWord.results?.first?.definition
+                    self?.removeSpinner()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -133,6 +137,19 @@ class HomeViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func addSpinner() {
+        addChild(spinnerViewController)
+        spinnerViewController.view.frame = view.frame
+        view.addSubview(spinnerViewController.view)
+        spinnerViewController.didMove(toParent: self)
+    }
+    
+    func removeSpinner() {
+        spinnerViewController.willMove(toParent: nil)
+        spinnerViewController.view?.removeFromSuperview()
+        spinnerViewController.removeFromParent()
     }
 
 
@@ -170,7 +187,7 @@ extension HomeViewController: SearchDelegate {
             print("missing word")
             return
         }
-        
+        addSpinner()
         networkManager.fetchSpecificWord(word) { [weak self] result in
             switch result {
             case .success(let word):
@@ -179,6 +196,7 @@ extension HomeViewController: SearchDelegate {
                     self?.words = wordsWithDefinition
                     self?.selectedWord = word.word
                     self?.collectionView.reloadData()
+                    self?.removeSpinner()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
