@@ -45,10 +45,20 @@ class HomeViewController: UIViewController {
         return collectionView
     }()
     
+    lazy var searchView: SearchView = {
+        let searchView = SearchView(searchDelegate: self)
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        searchView.layer.cornerRadius = 20
+
+        // Top right corner, Top left corner
+        searchView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        return searchView
+    }()
+    
     init(networkManager: NetworkManager = NetworkManager()) {
-            self.networkManager = networkManager
-            super.init(nibName: nil, bundle: nil)
-        }
+        self.networkManager = networkManager
+        super.init(nibName: nil, bundle: nil)
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -64,6 +74,7 @@ class HomeViewController: UIViewController {
     func setupUI() {
         setupAppTitle()
         setupContainerView()
+        setUpSearchView()
         setupCollectionView()
     }
     
@@ -86,10 +97,19 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    func setUpSearchView() {
+        view.addSubview(searchView)
+        NSLayoutConstraint.activate([
+            searchView.topAnchor.constraint(equalTo: mainWordContainerView.bottomAnchor, constant: 35),
+            searchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            searchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
     func setupCollectionView() {
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: mainWordContainerView.bottomAnchor, constant: 30),
+            collectionView.topAnchor.constraint(equalTo: searchView.bottomAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -102,7 +122,6 @@ class HomeViewController: UIViewController {
         networkManager.fetchRandomWord { [weak self] result in
             switch result {
             case .success(let randomWord):
-                print(randomWord)
                 DispatchQueue.main.async {
                     self?.mainWordContainerView.wordTitleLabel.text = randomWord.word
                     self?.mainWordContainerView.partsOfSpeechLabel.text = randomWord.results?.first?.partOfSpeech
@@ -142,6 +161,31 @@ extension HomeViewController: UICollectionViewDelegate {
             return
         }
         navigationController?.pushViewController(WordDetailsViewController(wordDetail: selectedWordDetails, selectedWord: selectedWord), animated: true)
+    }
+}
+
+extension HomeViewController: SearchDelegate {
+    func search(forWord word: String?) {
+        guard let word = word, !word.isEmpty else {
+            print("missing word")
+            return
+        }
+        
+        networkManager.fetchSpecificWord(word) { [weak self] result in
+            switch result {
+            case .success(let word):
+                DispatchQueue.main.async {
+                    let wordsWithDefinition = word.results?.filter { $0.definition != nil }
+                    self?.words = wordsWithDefinition
+                    self?.selectedWord = word.word
+                    self?.collectionView.reloadData()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }
 
