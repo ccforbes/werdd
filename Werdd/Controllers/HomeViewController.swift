@@ -9,7 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    let words: [Word] = WordsDataSource().words
+    private let networkManager: NetworkManager
+    var words: [WordDetail]?
+    var selectedWord: String?
     
     let appTitleLabel: UILabel = {
         let label = UILabel()
@@ -42,7 +44,16 @@ class HomeViewController: UIViewController {
         
         return collectionView
     }()
-
+    
+    init(networkManager: NetworkManager = NetworkManager()) {
+            self.networkManager = networkManager
+            super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "Light Gray")
@@ -88,10 +99,21 @@ class HomeViewController: UIViewController {
     /* MARK: Actions */
     
     func updateMainWordContainerWithRandomWord() {
-        let randomWord = words.randomElement()
-        mainWordContainerView.wordTitleLabel.text = randomWord?.name
-        mainWordContainerView.partsOfSpeechLabel.text = randomWord?.partOfSpeech
-        mainWordContainerView.definitionLabel.text = randomWord?.definition
+        networkManager.fetchRandomWord { [weak self] result in
+            switch result {
+            case .success(let randomWord):
+                print(randomWord)
+                DispatchQueue.main.async {
+                    self?.mainWordContainerView.wordTitleLabel.text = randomWord.word
+                    self?.mainWordContainerView.partsOfSpeechLabel.text = randomWord.results?.first?.partOfSpeech
+                    self?.mainWordContainerView.definitionLabel.text = randomWord.results?.first?.definition
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 
 
@@ -99,7 +121,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return words.count
+        return words?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -107,14 +129,19 @@ extension HomeViewController: UICollectionViewDataSource {
             print("Expected WordTableViewCell but found nil")
             return UICollectionViewCell()
         }
-        cell.update(with: words[indexPath.row])
+        cell.update(words?[indexPath.row], word: selectedWord)
         return cell
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(WordDetailsViewController(word: words[indexPath.row]), animated: true)
+        guard let selectedWord = selectedWord,
+              let selectedWordDetails = words?[indexPath.row] else {
+            assertionFailure("Selected word unexpectedly found nil")
+            return
+        }
+        navigationController?.pushViewController(WordDetailsViewController(wordDetail: selectedWordDetails, selectedWord: selectedWord), animated: true)
     }
 }
 

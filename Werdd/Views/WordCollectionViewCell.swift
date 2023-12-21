@@ -81,9 +81,9 @@ class WordCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func update(with word: Word) {
-        wordTitleLabel.text = word.name
-        definitionLabel.text = word.definition
-        partsOfSpeechLabel.text = word.partOfSpeech
+    func update(_ wordDetail: WordDetail?, word: String?) {
+        wordTitleLabel.text = word
+        definitionLabel.text = wordDetail?.definition
+        partsOfSpeechLabel.text = wordDetail?.partOfSpeech
     }
 }

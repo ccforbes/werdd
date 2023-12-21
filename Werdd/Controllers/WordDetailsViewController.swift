@@ -9,7 +9,8 @@ import UIKit
 
 class WordDetailsViewController: UIViewController {
     
-    let word: Word
+    let wordDetail: WordDetail
+    let selectedWord: String
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -29,16 +30,16 @@ class WordDetailsViewController: UIViewController {
     lazy var definitionView: WordDetailsView = {
         let view = WordDetailsView(
             title: "Definition",
-            partOfSpeech: word.partOfSpeech,
-            descriptionText: word.definition,
+            partOfSpeech: wordDetail.partOfSpeech,
+            descriptionText: wordDetail.definition,
             backgroundColor: UIColor(named: "Blue")
         )
         return view
     }()
     
     lazy var synonyms: WordDetailsView = {
-        let hideSynonyms = word.synonyms == nil
-        let synonymsText = word.synonyms?.joined(separator: ", ")
+        let hideSynonyms = wordDetail.synonyms == nil
+        let synonymsText = wordDetail.synonyms?.joined(separator: ", ")
         let view = WordDetailsView(
             title: "Synonyms",
             partOfSpeech: nil,
@@ -50,8 +51,8 @@ class WordDetailsViewController: UIViewController {
     }()
     
     lazy var antonyms: WordDetailsView = {
-        let hideAntonyms = word.antonyms == nil
-        let antonymsText = word.antonyms?.joined(separator: ", ")
+        let hideAntonyms = wordDetail.antonyms == nil
+        let antonymsText = wordDetail.antonyms?.joined(separator: ", ")
         let view = WordDetailsView(
             title: "Antonyms",
             partOfSpeech: nil,
@@ -63,8 +64,8 @@ class WordDetailsViewController: UIViewController {
     }()
     
     lazy var examples: WordDetailsView = {
-        let hideExamples = word.examples == nil
-        let examplesText = word.examples?.joined(separator: "\n")
+        let hideExamples = wordDetail.examples == nil
+        let examplesText = wordDetail.examples?.joined(separator: "\n")
         let view = WordDetailsView(
             title: "Examples",
             partOfSpeech: nil,
@@ -75,8 +76,9 @@ class WordDetailsViewController: UIViewController {
         return view
     }()
     
-    init(word: Word) {
-        self.word = word
+    init(wordDetail: WordDetail, selectedWord: String) {
+        self.wordDetail = wordDetail
+        self.selectedWord = selectedWord
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -100,7 +102,7 @@ class WordDetailsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
-        navigationItem.title = word.name
+        navigationItem.title = selectedWord
     }
     
     private func setupContentStackView() {
