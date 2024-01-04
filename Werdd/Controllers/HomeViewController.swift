@@ -14,6 +14,15 @@ class HomeViewController: UIViewController {
     var selectedWord: String?
     
     let spinnerViewController = SpinnerViewController()
+    let favoriteWordsViewController = FavoriteWordsViewController()
+    
+    let headerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        return stackView
+    }()
     
     let appTitleLabel: UILabel = {
         let label = UILabel()
@@ -21,6 +30,18 @@ class HomeViewController: UIViewController {
         label.text = "Werdd."
         label.font = UIFont(name: "Rubik-SemiBold", size: 36)
         return label
+    }()
+    
+    lazy var favoritesListButton: UIButton = {
+        let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 30, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "heart.text.square.fill", withConfiguration: symbolConfiguration)
+
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(image, for: .normal)
+        button.imageView?.tintColor = UIColor(named: "WerddPink")
+        button.addTarget(self, action: #selector(favoritesListButtonPressed), for: .touchUpInside)
+        return button
     }()
     
     lazy var mainWordContainerView: WordContainerView = {
@@ -74,25 +95,27 @@ class HomeViewController: UIViewController {
     }
     
     func setupUI() {
-        setupAppTitle()
+        setupHeader()
         setupContainerView()
         setUpSearchView()
         setupCollectionView()
     }
     
-    func setupAppTitle() {
-        view.addSubview(appTitleLabel)
+    func setupHeader() {
+        headerStackView.addArrangedSubview(appTitleLabel)
+        headerStackView.addArrangedSubview(favoritesListButton)
+        view.addSubview(headerStackView)
         NSLayoutConstraint.activate([
-            appTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            appTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            appTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
+            headerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            headerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            headerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
     }
     
     func setupContainerView() {
         view.addSubview(mainWordContainerView)
         NSLayoutConstraint.activate([
-            mainWordContainerView.topAnchor.constraint(equalTo: appTitleLabel.bottomAnchor, constant: 30),
+            mainWordContainerView.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 30),
             mainWordContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant:  20),
             mainWordContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             mainWordContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2),
@@ -119,6 +142,10 @@ class HomeViewController: UIViewController {
     }
     
     /* MARK: Actions */
+    
+    @objc func favoritesListButtonPressed() {
+        navigationController?.pushViewController(FavoriteWordsViewController(), animated: true)
+    }
     
     func updateMainWordContainerWithRandomWord() {
         addSpinner()
