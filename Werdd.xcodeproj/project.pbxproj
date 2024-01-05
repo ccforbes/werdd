@@ -32,6 +32,7 @@
 		D3C548512B479E0200BCF421 /* Werdd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */; };
 		D3C548602B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */; };
 		D3C548612B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */; };
+		D3C548632B47A06900BCF421 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C548622B47A06900BCF421 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		D3C548502B479E0200BCF421 /* Werdd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Werdd.xcdatamodel; sourceTree = "<group>"; };
 		D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D3C548622B47A06900BCF421 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				D33B278529EE1BFB00CE0209 /* LaunchScreen.storyboard */,
 				D33B278829EE1BFB00CE0209 /* Info.plist */,
 				D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */,
+				D3C548622B47A06900BCF421 /* DataManager.swift */,
 			);
 			path = Werdd;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				D3C5484B2B4754D300BCF421 /* FavoriteWordsTableViewCell.swift in Sources */,
 				D33B277B29EE1BFA00CE0209 /* AppDelegate.swift in Sources */,
 				D33B277D29EE1BFA00CE0209 /* SceneDelegate.swift in Sources */,
+				D3C548632B47A06900BCF421 /* DataManager.swift in Sources */,
 				D3A6C5FE2AAAB81F00CADA8F /* Word.swift in Sources */,
 				D3C548612B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift in Sources */,
 				D3C2AD3E2B108E9600716BC9 /* WordDetailsViewController.swift in Sources */,
