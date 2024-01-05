@@ -29,6 +29,9 @@
 		D3C2AD402B10920300716BC9 /* WordDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C2AD3F2B10920300716BC9 /* WordDetailsView.swift */; };
 		D3C548472B47525900BCF421 /* FavoriteWordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C548462B47525900BCF421 /* FavoriteWordsViewController.swift */; };
 		D3C5484B2B4754D300BCF421 /* FavoriteWordsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5484A2B4754D300BCF421 /* FavoriteWordsTableViewCell.swift */; };
+		D3C548512B479E0200BCF421 /* Werdd.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */; };
+		D3C548602B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */; };
+		D3C548612B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		D3C2AD3F2B10920300716BC9 /* WordDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailsView.swift; sourceTree = "<group>"; };
 		D3C548462B47525900BCF421 /* FavoriteWordsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWordsViewController.swift; sourceTree = "<group>"; };
 		D3C5484A2B4754D300BCF421 /* FavoriteWordsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWordsTableViewCell.swift; sourceTree = "<group>"; };
+		D3C548502B479E0200BCF421 /* Werdd.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Werdd.xcdatamodel; sourceTree = "<group>"; };
+		D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,8 @@
 		D33B276E29EE1BFA00CE0209 = {
 			isa = PBXGroup;
 			children = (
+				D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */,
+				D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */,
 				D33B277929EE1BFA00CE0209 /* Werdd */,
 				D33B277829EE1BFA00CE0209 /* Products */,
 			);
@@ -99,6 +107,7 @@
 				D33B278329EE1BFB00CE0209 /* Assets.xcassets */,
 				D33B278529EE1BFB00CE0209 /* LaunchScreen.storyboard */,
 				D33B278829EE1BFB00CE0209 /* Info.plist */,
+				D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */,
 			);
 			path = Werdd;
 			sourceTree = "<group>";
@@ -222,11 +231,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3C548512B479E0200BCF421 /* Werdd.xcdatamodeld in Sources */,
 				D3C548472B47525900BCF421 /* FavoriteWordsViewController.swift in Sources */,
 				D35DE9772B33E84F007198F0 /* NetworkManager.swift in Sources */,
 				D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */,
 				D35DE9752B312C30007198F0 /* APIConstants.swift in Sources */,
 				D35DE97B2B34FE4F007198F0 /* SpinnerViewController.swift in Sources */,
+				D3C548602B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift in Sources */,
 				D3A6C5FC2AAAAD5000CADA8F /* RandomWordButton.swift in Sources */,
 				D35DE9792B3459D5007198F0 /* SearchView.swift in Sources */,
 				D33B277F29EE1BFA00CE0209 /* HomeViewController.swift in Sources */,
@@ -235,6 +246,7 @@
 				D33B277B29EE1BFA00CE0209 /* AppDelegate.swift in Sources */,
 				D33B277D29EE1BFA00CE0209 /* SceneDelegate.swift in Sources */,
 				D3A6C5FE2AAAB81F00CADA8F /* Word.swift in Sources */,
+				D3C548612B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift in Sources */,
 				D3C2AD3E2B108E9600716BC9 /* WordDetailsViewController.swift in Sources */,
 				D3C2AD402B10920300716BC9 /* WordDetailsView.swift in Sources */,
 			);
@@ -452,6 +464,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3C548502B479E0200BCF421 /* Werdd.xcdatamodel */,
+			);
+			currentVersion = D3C548502B479E0200BCF421 /* Werdd.xcdatamodel */;
+			path = Werdd.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D33B276F29EE1BFA00CE0209 /* Project object */;
 }
