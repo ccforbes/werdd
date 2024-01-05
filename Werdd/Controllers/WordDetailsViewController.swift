@@ -11,6 +11,11 @@ class WordDetailsViewController: UIViewController {
     
     let wordDetail: WordDetail
     let selectedWord: String
+    var isFavorited: Bool = false {
+        didSet {
+            updateRightBarButton()
+        }
+    }
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -103,6 +108,7 @@ class WordDetailsViewController: UIViewController {
         let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationItem.title = selectedWord
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorites))
     }
     
     private func setupContentStackView() {
@@ -134,5 +140,21 @@ class WordDetailsViewController: UIViewController {
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
         ])
+    }
+    
+    private func updateRightBarButton() {
+        if isFavorited {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .done, target: self, action: #selector(removeFromFavorites))
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorites))
+        }
+    }
+    
+    @objc func addToFavorites() {
+        isFavorited = true
+    }
+    
+    @objc func removeFromFavorites() {
+        isFavorited = false
     }
 }
