@@ -96,6 +96,14 @@ class WordDetailsViewController: UIViewController {
         view.backgroundColor = UIColor(named: "Light Gray")
         setupNavigation()
         setupUI()
+        
+        DataManager.fetchFavoriteWord(withName: selectedWord, andDefinition: wordDetail.definition!) { favoriteWord in
+            guard favoriteWord != nil else {
+                isFavorited = false
+                return
+            }
+            isFavorited = true
+        }
     }
     
     private func setupUI() {
@@ -108,7 +116,6 @@ class WordDetailsViewController: UIViewController {
         let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         navigationItem.title = selectedWord
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .done, target: self, action: #selector(addToFavorites))
     }
     
     private func setupContentStackView() {
@@ -151,10 +158,12 @@ class WordDetailsViewController: UIViewController {
     }
     
     @objc func addToFavorites() {
+        DataManager.addFavoriteWord(fromWord: selectedWord, withDetails: wordDetail)
         isFavorited = true
     }
     
     @objc func removeFromFavorites() {
+        DataManager.deleteFavoriteWord(withName: selectedWord, withDefinition: wordDetail.definition!)
         isFavorited = false
     }
 }

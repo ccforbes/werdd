@@ -11,7 +11,7 @@ import UIKit
 
 class DataManager {
     
-    static let managedObjectContext: NSManagedObjectContext = {
+    static var managedObjectContext: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.persistentContainer.viewContext
     }()
@@ -29,6 +29,7 @@ class DataManager {
         
         do {
             try managedObjectContext.save()
+            print("saved")
         } catch {
             print("unable to add favorite word")
         }
@@ -41,8 +42,8 @@ class DataManager {
             completion(favoriteWords)
         } catch {
             print("Could not fetch favorite words")
+            completion(nil)
         }
-        completion(nil)
     }
     
     static func fetchFavoriteWord(withName name: String, andDefinition definition: String, completion: (FavoriteWord?) -> Void) {
@@ -54,8 +55,8 @@ class DataManager {
             completion(favoriteWord.first)
         } catch {
             print("Could not fetch word")
+            completion(nil)
         }
-        completion(nil)
     }
     
     // MARK: - Update
@@ -88,7 +89,7 @@ class DataManager {
         }
     }
     
-    static func deleteFavoriteWord(word: FavoriteWord) {
+    static func deleteFavoriteWord(word: FavoriteWord) throws {
         managedObjectContext.delete(word)
         
         do {

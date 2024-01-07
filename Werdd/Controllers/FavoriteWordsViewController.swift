@@ -9,6 +9,8 @@ import UIKit
 
 class FavoriteWordsViewController: UIViewController {
     
+    private var favoriteWords: [FavoriteWord]?
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,6 +35,7 @@ class FavoriteWordsViewController: UIViewController {
         navigationItem.title = "Favorites"
         navigationController?.navigationBar.prefersLargeTitles = true
         setupUI()
+        fetchFavoriteWords()
     }
     
 
@@ -56,23 +59,47 @@ class FavoriteWordsViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
+    
+    private func fetchFavoriteWords() {
+        DataManager.fetchAllFavoriteWords { favoriteWords in
+            self.favoriteWords = favoriteWords
+        }
+    }
+    
+    private func deleteFavoritedWord(_ word: FavoriteWord, atIndexPath indexPath: IndexPath) {
+        do {
+            try DataManager.deleteFavoriteWord(word: word)
+            favoriteWords?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } catch {
+            print("Unable to remove word from list")
+        }
+    }
 
 }
 
 extension FavoriteWordsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return favoriteWords?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let favoriteWord = favoriteWords?[indexPath.row] else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteWordsTableViewCell.id, for: indexPath) as! FavoriteWordsTableViewCell
-        let word = WordDetail(definition: "Definition", synonyms: ["Synonyms"], antonyms: ["Antonyms"], examples: ["Examples"], partOfSpeech: "Part of Speech")
-        cell.update(word, word: "Word")
+        cell.update(favoriteWord: favoriteWord)
         return cell
     }
     
 }
 
 extension FavoriteWordsViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "Delete", message: "Are you sure you want to delete?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Delete", style: .default) { _ in
+            guard let favoriteWord = self.favoriteWords?[indexPath.row] else { return }
+            self.deleteFavoritedWord(favoriteWord, atIndexPath: indexPath)
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
 }

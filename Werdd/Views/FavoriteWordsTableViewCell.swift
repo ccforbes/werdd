@@ -81,10 +81,10 @@ class FavoriteWordsTableViewCell: UITableViewCell {
         ])
     }
     
-    func update(_ wordDetail: WordDetail?, word: String?) {
-        wordTitleLabel.text = word
-        definitionLabel.text = wordDetail?.definition
-        partsOfSpeechLabel.text = wordDetail?.partOfSpeech
+    func update(favoriteWord word: FavoriteWord) {
+        wordTitleLabel.text = word.name
+        definitionLabel.text = word.definition
+        partsOfSpeechLabel.text = word.partOfSpeech
     }
 
 }
