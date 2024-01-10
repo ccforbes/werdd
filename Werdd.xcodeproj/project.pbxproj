@@ -34,6 +34,7 @@
 		D3C548602B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */; };
 		D3C548612B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */; };
 		D3C548632B47A06900BCF421 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C548622B47A06900BCF421 /* DataManager.swift */; };
+		D3C548662B4CF78B00BCF421 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C548652B4CF78B00BCF421 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		D3C5485E2B47A01E00BCF421 /* FavoriteWord+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D3C5485F2B47A01E00BCF421 /* FavoriteWord+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteWord+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D3C548622B47A06900BCF421 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D3C548652B4CF78B00BCF421 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				D33B278529EE1BFB00CE0209 /* LaunchScreen.storyboard */,
 				D33B278829EE1BFB00CE0209 /* Info.plist */,
 				D3C5484F2B479E0200BCF421 /* Werdd.xcdatamodeld */,
+				D3C548652B4CF78B00BCF421 /* HomeViewModel.swift */,
 			);
 			path = Werdd;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				D3C548512B479E0200BCF421 /* Werdd.xcdatamodeld in Sources */,
 				D3C548472B47525900BCF421 /* FavoriteWordsViewController.swift in Sources */,
 				D35DE9772B33E84F007198F0 /* NetworkManager.swift in Sources */,
+				D3C548662B4CF78B00BCF421 /* HomeViewModel.swift in Sources */,
 				D3A6C5FA2AAAAC1D00CADA8F /* WordContainerView.swift in Sources */,
 				D35DE9752B312C30007198F0 /* APIConstants.swift in Sources */,
 				D35DE97B2B34FE4F007198F0 /* SpinnerViewController.swift in Sources */,

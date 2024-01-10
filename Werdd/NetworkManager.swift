@@ -9,35 +9,39 @@ import Foundation
 import Alamofire
 
 final class NetworkManager {
-    func fetchRandomWord(completion: @escaping (Result<Word, Error>) -> Void) {
+    func fetchRandomWord() async throws -> Word {
         let headers: HTTPHeaders = [
             "x-rapidapi-key": APIConstants.apiKey,
             "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
         ]
         
-        AF.request("https://wordsapiv1.p.rapidapi.com/words?random=true&hasDetails=definitions", method: .get, headers: headers)
-            .responseDecodable(of: Word.self) { response in
-                if let error = response.error {
-                    print("Fetching random word failed with error: \(String(describing: error.localizedDescription))")
-                    completion(.failure(error))
-                }
-                completion(.success(response.value!))
+        do {
+            let word = try await AF.request("https://wordsapiv1.p.rapidapi.com/words?random=true&hasDetails=definitions",
+                                             method: .get,
+                                             headers: headers)
+                .serializingDecodable(Word.self)
+                .value
+            return word
+        } catch {
+            print("Fetching random word failed with error: \(String(describing: error.localizedDescription))")
+            throw error
         }
     }
     
-    func fetchSpecificWord(_ word: String, completion: @escaping (Result<Word, Error>) -> Void) {
+    func fetchSpecificWord(_ word: String) async throws -> Word {
         let headers: HTTPHeaders = [
             "x-rapidapi-key": APIConstants.apiKey,
             "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
         ]
         
-        AF.request("https://wordsapiv1.p.rapidapi.com/words/\(word)", method: .get, headers: headers)
-            .responseDecodable(of: Word.self) { response in
-                if let error = response.error {
-                    print("Fetching specific word failed with error: \(String(describing: error.localizedDescription))")
-                    completion(.failure(error))
-                }
-                completion(.success(response.value!))
+        do {
+            let word = try await AF.request("https://wordsapiv1.p.rapidapi.com/words/\(word)", method: .get, headers: headers)
+                .serializingDecodable(Word.self)
+                .value
+            return word
+        } catch {
+            print("Fetching specific word failed with error: \(String(describing: error.localizedDescription))")
+            throw error
         }
     }
 }
